@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفعيل الحساب</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>تفعيل الحساب</h1>
+    <p>تم التسجيل بنجاح. أدخل الكود المرسل إليك لتفعيل حسابك:</p>
+    <form action="verification.html" method="POST">
+      <div class="form-group">
+        <label for="code">الكود:</label>
+        <input type="text" id="code" name="code" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-success btn-block">تفعيل</button>
+    </form>
+  </div>
+</body>
+</html>
