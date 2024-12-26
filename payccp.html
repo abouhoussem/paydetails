@@ -70,4 +70,66 @@
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>الدفع عبر CCP</h1>
+        </div>
+
+        <!-- Description Section -->
+        <div class="description">
+            <p>قم بإتمام عملية الشراء بكل سهولة وأمان باستخدام حساب CCP الخاص بك.</p>
+        </div>
+
+        <!-- Products Section -->
+        <div class="products">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/250x150" alt="منتج 1">
+                <h3>منتج 1</h3>
+                <p>وصف مختصر للمنتج.</p>
+                <button>اشترِ الآن</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/250x150" alt="منتج 2">
+                <h3>منتج 2</h3>
+                <p>وصف مختصر للمنتج.</p>
+                <button>اشترِ الآن</button>
+            </div>
+        </div>
+
+        <!-- Payment Form Section -->
+        <div class="form-container">
+            <h2>إتمام الدفع</h2>
+            <form action="#" method="post">
+                <input type="text" name="ccp_number" placeholder="رقم الحساب" required>
+                <input type="number" name="amount" placeholder="المبلغ بالدينار الجزائري" required>
+                <input type="text" name="sender_name" placeholder="اسم المرسل" required>
+                <button type="submit">إتمام الطلب</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
