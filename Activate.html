@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفعيل التطبيق</title>
     <style>
-        /* إعدادات الخطوط والألوان */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -33,7 +32,7 @@
             margin-bottom: 20px;
             line-height: 1.6;
         }
-        a {
+        a, button {
             display: inline-block;
             background-color: #4CAF50;
             color: white;
@@ -41,19 +40,72 @@
             padding: 10px 20px;
             font-size: 1rem;
             border-radius: 5px;
+            cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
         }
-        a:hover {
+        a:hover, button:hover {
             background-color: #45a049;
             transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        .input-group {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>تفعيل التطبيق</h1>
-        <p>لتحميل كود التفعيل الخاص بالتطبيق، يرجى النقر على الزر أدناه.</p>
-        <a href="https://nz.sa/QTilP" target="_blank">تحميل كود التفعيل</a>
+        <p>يرجى إتمام عملية الدفع للوصول إلى كود التفعيل الخاص بك.</p>
+        
+        <!-- زر الدفع -->
+        <button id="payButton" onclick="completePayment()">دفع السعر</button>
+
+        <!-- زر تحميل الكود (مخفي) -->
+        <div id="downloadSection" class="hidden">
+            <p>تم الدفع بنجاح! يمكنك الآن تحميل كود التفعيل.</p>
+            <a href="https://nz.sa/QTilP" target="_blank">تحميل كود التفعيل</a>
+            
+            <!-- نافذة إدخال الكود -->
+            <div class="input-group">
+                <input type="text" id="activationCode" placeholder="أدخل كود التفعيل هنا">
+                <button onclick="activateApp()">تفعيل التطبيق</button>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function completePayment() {
+            // محاكاة إتمام الدفع (يمكن ربطها بخدمة دفع حقيقية)
+            alert("تم الدفع بنجاح!");
+            
+            // عرض قسم تحميل الكود
+            document.getElementById("downloadSection").classList.remove("hidden");
+        }
+
+        function activateApp() {
+            // الكود الصحيح للتفعيل
+            const correctCode = "12345-67890";
+            const userCode = document.getElementById("activationCode").value;
+
+            if (userCode === correctCode) {
+                alert("تم تفعيل التطبيق بنجاح!");
+                // يمكنك إضافة إجراءات إضافية هنا مثل فتح صفحة التطبيق
+                window.location.href = "application.html"; // صفحة التطبيق بعد التفعيل
+            } else {
+                alert("كود التفعيل غير صحيح. يرجى المحاولة مرة أخرى.");
+            }
+        }
+    </script>
 </body>
 </html>
