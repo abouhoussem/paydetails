@@ -5,77 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>طرق الدفع</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f3f7fa;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 2rem;
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        a {
-            display: block;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            margin: 10px auto;
-            width: 80%;
-            text-align: center;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        a:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
         .hidden {
             display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div>
         <h1>طرق الدفع</h1>
-        <p>اختر طريقة الدفع التي تناسبك:</p>
-
-        <!-- رابط PayPal -->
-        <a href="https://www.paypal.com/pay?return=https://yourdomain.com/howtopay.html?payment=success" target="_blank">الدفع عبر PayPal</a>
-
-        <!-- رابط CCP -->
-        <a href="https://ccppay-link.com?return=https://yourdomain.com/howtopay.html?payment=success" target="_blank">الدفع عبر CCP</a>
-
-        <!-- رابط العودة إلى صفحة التفعيل (مخفي في البداية) -->
-        <a id="returnToActivation" href="activate.html" class="hidden">العودة إلى صفحة التفعيل</a>
+        <a href="activation.html" id="returnToActivation" class="hidden">العودة إلى صفحة التفعيل</a>
     </div>
 
     <script>
-        // التحقق من حالة الدفع من رابط URL
         const urlParams = new URLSearchParams(window.location.search);
         const paymentStatus = urlParams.get('payment');
 
         if (paymentStatus === 'success') {
-            // إظهار رابط العودة إلى صفحة التفعيل عند نجاح الدفع
             document.getElementById('returnToActivation').classList.remove('hidden');
         }
     </script>
