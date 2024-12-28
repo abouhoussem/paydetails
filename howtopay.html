@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طرق الدفع</title>
+    <title>تم الدفع بنجاح</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -33,16 +33,14 @@
             line-height: 1.6;
         }
         a {
-            display: block;
+            display: inline-block;
             background-color: #4CAF50;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
             font-size: 1rem;
             border-radius: 5px;
-            margin: 10px auto;
-            width: 80%;
-            text-align: center;
+            cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
         }
         a:hover {
@@ -53,17 +51,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>طرق الدفع</h1>
-        <p>اختر طريقة الدفع التي تناسبك:</p>
-
-        <!-- رابط PayPal -->
-        <a href="https://www.paypal.com/pay?return=https://yourdomain.com/activation.html?payment=success" target="_blank">الدفع عبر PayPal</a>
-
-        <!-- رابط CCP -->
-        <a href="https://ccp-payment-link.com?return=https://yourdomain.com/activation.html?payment=success" target="_blank">الدفع عبر CCP</a>
-
-        <!-- زر للعودة إلى صفحة التفعيل -->
+        <h1>تم الدفع بنجاح!</h1>
+        <p>شكراً على الدفع. يمكنك الآن المتابعة إلى التطبيق أو العودة إلى صفحة التفعيل.</p>
+        
+        <!-- رابط العودة إلى صفحة التفعيل -->
         <a href="activation.html">العودة إلى صفحة التفعيل</a>
+
+        <!-- رابط التطبيق (أو صفحة التنزيل) -->
+        <a href="app-download.html">الانتقال إلى التطبيق</a>
     </div>
 </body>
 </html>
