@@ -1,171 +1,111 @@
-               
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تمشروعك</title>
-  <style>
-    /* تنسيق الصفحة العامة */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      background-color: #f2f2f2;
-      min-height: 100vh;
-      text-align: center;
-    }
-
-    /* العناوين */
-    h1, h2 {
-      color: #003366;
-      margin: 20px 0;
-    }
-
-    /* الروابط */
-    a {
-      color: #003366;
-      text-decoration: none;
-      margin: 10px;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* أزرار تغيير اللغة */
-    .language-buttons {
-      margin: 10px 0;
-    }
-
-    .language-buttons button {
-      padding: 10px 20px;
-      background-color: #0055cc;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      margin: 0 5px;
-      cursor: pointer;
-    }
-
-    .language-buttons button:hover {
-      background-color: #003366;
-    }
-
-    /* قسم خيارات الدفع */
-    .payment-options {
-      margin: 20px 0;
-    }
-
-    /* قسم التعليقات */
-    .comment-form {
-      width: 60%;
-      margin-top: 30px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: #ffffff;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    textarea, input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      resize: none;
-    }
-
-    button[type="submit"] {
-      padding: 10px 20px;
-      background-color: #003366;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #0055cc;
-    }
-
-    /* قائمة التعليقات */
-    #commentList {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-
-    #commentList li {
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفعيل التطبيق</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f7fa;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        a, button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        a:hover, button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        .input-group {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <!-- عنوان الصفحة -->
-  <h1 id="main-title">مرحبًا بك  في مشروعك المريح</h1>
+    <div class="container">
+        <h1>تفعيل التطبيق</h1>
+        <p>يرجى إتمام عملية الدفع للوصول إلى كود التفعيل الخاص بك.</p>
+        
+        <!-- زر الدفع -->
+        <button id="payButton" onclick="completePayment()">دفع السعر</button>
 
-  <!-- زر اختيار اللغة -->
-  <div class="language-buttons">
-    <button id="arabicBtn">عربي</button>
-    <button id="englishBtn">English</button>
-  </div>
+        <!-- زر تحميل الكود (مخفي) -->
+        <div id="downloadSection" class="hidden">
+            <p>تم الدفع بنجاح! يمكنك الآن تحميل كود التفعيل.</p>
+            <a href="https://nz.sa/QTilP" target="_blank">تحميل كود التفعيل</a>
+            
+            <!-- نافذة إدخال الكود -->
+            <div class="input-group">
+                <input type="text" id="activationCode" placeholder="أدخل كود التفعيل هنا">
+                <button onclick="activateApp()">تفعيل التطبيق</button>
+            </div>
+        </div>
+    </div>
 
-  <!-- الروابط الجديدة -->
-  <footer>
-    <a href="https://abouhoussem.github.io/application/">امشروع التطبيق شاهده الآن</a> |
-    <a href="PolicyPages.html">سياسة الصفحات </a> | 
-  
-   
-    
-   
-  </footer>
+    <script>
+        function completePayment() {
+            // محاكاة إتمام الدفع (يمكن ربطها بخدمة دفع حقيقية)
+            alert("تم الدفع بنجاح!");
+            
+            // عرض قسم تحميل الكود
+            document.getElementById("downloadSection").classList.remove("hidden");
+        }
 
-  <!-- قسم التعليقات -->
-  <div class="comment-form">
-    <h2 id="comments-title">آراء الزبائن</h2>
-    <p id="add-comment">أضف تعليقك:</p>
-    <form id="commentForm">
-      <input type="text" id="nameInput" placeholder="اسمك" required>
-      <textarea id="commentInput" placeholder="اكتب تعليقك هنا..." rows="4" required></textarea>
-      <button type="submit">إرسال</button>
-    </form>
-    <ul id="commentList"></ul>
-  </div>
+        function activateApp() {
+            // الكود الصحيح للتفعيل
+            const correctCode = "12345-67890";
+            const userCode = document.getElementById("activationCode").value.trim();
 
-  <script>
-    const arabicBtn = document.getElementById('arabicBtn');
-    const englishBtn = document.getElementById('englishBtn');
-
-    arabicBtn.addEventListener('click', () => {
-      document.documentElement.lang = 'ar';
-      document.documentElement.dir = 'rtl';
-      document.getElementById('main-title').textContent = 'مرحبًا بك في تطبيق الدفع';
-      document.getElementById('payment-title').textContent = 'اختر طريقة الدفع:';
-      document.getElementById('baridimob-link').textContent = 'الدفع باستخدام BaridiMob';
-      document.getElementById('paypal-link').textContent = 'الدفع باستخدام PayPal';
-      document.getElementById('comments-title').textContent = 'آراء الزبائن';
-      document.getElementById('add-comment').textContent = 'أضف تعليقك:';
-    });
-
-    englishBtn.addEventListener('click', () => {
-      document.documentElement.lang = 'en';
-      document.documentElement.dir = 'ltr';
-      document.getElementById('main-title').textContent = 'Welcome to the Payment App';
-      document.getElementById('payment-title').textContent = 'Choose a payment method:';
-      document.getElementById('baridimob-link').textContent = 'Pay using BaridiMob';
-      document.getElementById('paypal-link').textContent = 'Pay using PayPal';
-      document.getElementById('comments-title').textContent = 'Customer Reviews';
-      document.getElementById('add-comment').textContent = 'Add your comment:';
-    });
-  </script>
+            if (userCode === correctCode) {
+                alert("تم تفعيل التطبيق بنجاح!");
+                // يمكنك إضافة إجراءات إضافية هنا مثل فتح صفحة التطبيق
+                window.location.href = "application.html"; // صفحة التطبيق بعد التفعيل
+            } else {
+                alert("كود التفعيل غير صحيح. يرجى المحاولة مرة أخرى.");
+            }
+        }
+    </script>
 </body>
 </html>
