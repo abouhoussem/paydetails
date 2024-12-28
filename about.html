@@ -1,4 +1,4 @@
-                                                                                <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -37,12 +37,17 @@
     p {
       font-size: 1.2rem; /* حجم مناسب للنصوص */
       line-height: 1.8;
-      margin: 0;
+      margin: 0 0 10px;
     }
 
-    a {
-      display: inline-block;
-      margin-top: 20px;
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .navbar a {
       padding: 10px 20px;
       font-size: 1rem;
       color: #fff;
@@ -53,19 +58,36 @@
       transition: 0.3s;
     }
 
-    a:hover {
+    .navbar a:hover {
       background: #e64a19;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .navbar a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
     }
   </style>
 </head>                                   
 <body>
   <div class="container">
     <h1>من نحن</h1>
-<a href="MyProject.html">امشروعك هنا</a>
-    <a href="index.html">الرئيسية</a>
- <a href="pay.html"> ادفع بالدينار</a>
-<a href="paypal.html">ا لبايبال</a>
+    <div class="navbar">
+      <a href="MyProject.html">مشروعك هنا</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="pay.html">ادفع بالدينار</a>
+      <a href="paypal.html">البايبال</a>
+    </div>
     <p>
       نحن فريق متخصص في تطوير التطبيقات الرقمية الحديثة التي تلبي احتياجات العملاء وتسهم في تحسين تجربتهم. 
       نسعى دائمًا إلى تقديم أفضل الخدمات والحلول المبتكرة لضمان رضا عملائنا.
@@ -73,7 +95,6 @@
     <p>
       هدفنا هو تحقيق تأثير إيجابي باستخدام التقنيات الحديثة، والالتزام بالجودة والشفافية في كل ما نقدمه.
     </p>
-             
   </div>
 </body>
 </html>
