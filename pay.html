@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل المنتج والدفع</title>
+    <title>تفاصيل الدفع</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* تنسيق الصفحة */
@@ -24,14 +24,14 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
         }
 
         h1 {
             font-size: 2.5rem;
             color: #007bff;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .owner {
@@ -74,6 +74,40 @@
             margin: 20px 0;
         }
 
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2rem;
+            color: #212529;
+            margin: 10px 0 5px;
+        }
+
+        input, button {
+            font-size: 1.1rem;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 1rem;
@@ -92,16 +126,31 @@
 </head>
 <body>
     <div class="container">
-        <h1>تفاصيل الدفع :اسم المنتج</h1>
+        <h1>تفاصيل الدفع</h1>
         <p class="owner">اسم صاحب الحساب: <span class="highlight">عاتق حسان</span></p>
         <div class="account">
             <p>رقم الحساب البريدي: <span class="highlight">426423264</span></p>
             <p>رقم بريدي موب: <span class="highlight">00799999000426423264</span></p>
         </div>
         <p class="product-desc">
-            المنتج: هذاالمنتج يساعدك في تحصيل أموالك بأريحية وسلاسة تامة من خلال الدفع بالوسائل المتوفرة٫ وهو فعلا ما ترغب في شرائه. يتميز بجودة عالية وسعر تنافسي لضمان رضا العملاء.
+            المنتج: هذا هو وصف المنتج الذي ترغب في شرائه. يتميز بجودة عالية وسعر تنافسي لضمان رضا العملاء.
         </p>
-        <p class="price">المبلغ المطلوب: <span>9.99 دولار</span></p>
+        <p class="price">المبلغ المطلوب: <span>2650دينار جزائري</span></p>
+
+        <!-- نموذج إضافة التفاصيل -->
+        <form action="submit_payment.php" method="POST" enctype="multipart/form-data">
+            <label for="customerName">اسم العميل:</label>
+            <input type="text" id="customerName" name="customerName" placeholder="أدخل اسمك" required>
+
+            <label for="customerAccount">رقم الحساب البريدي الذي دفعت منه:</label>
+            <input type="text" id="customerAccount" name="customerAccount" placeholder="أدخل رقم الحساب" required>
+
+            <label for="paymentReceipt">تحميل وصل الدفع:</label>
+            <input type="file" id="paymentReceipt" name="paymentReceipt" accept=".jpg, .jpeg, .png, .pdf" required>
+
+            <button type="submit">إرسال التفاصيل</button>
+        </form>
+
         <div class="footer">
             <p>للمزيد من التفاصيل، <a href="contact.html">اتصل بنا</a></p>
         </div>
