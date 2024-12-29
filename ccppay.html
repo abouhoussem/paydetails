@@ -72,6 +72,12 @@
             background-color: #0056b3;
             transform: scale(1.05);
         }
+        .confirmation-message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: green;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -79,19 +85,33 @@
         <h1>الدفع عبر الحساب البريدي الجاري</h1>
         <p>يرجى استخدام المعلومات التالية لإتمام عملية الدفع:</p>
         <div class="details">
-            <p><span>رقم الحساب البريدي:</span>.........</p>
-            <p><span>المفتاح:</span>.......</p>
-            <p><span>الاسم واللقب:</span>.......</p>
+            <p><span>رقم الحساب البريدي:</span> ..........</p>
+            <p><span>المفتاح:</span> ..........</p>
+            <p><span>الاسم واللقب:</span> ..........</p>
         </div>
         <p>بعد إتمام الدفع، يرجى رفع نسخة من وصل الدفع وإرسالها باستخدام النموذج أدناه:</p>
         <div class="upload-section">
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form action="submit_payment.php" method="post" enctype="multipart/form-data">
                 <input type="text" name="username" placeholder="اسمك الكامل" required>
                 <textarea name="message" rows="4" placeholder="أضف أي ملاحظات إضافية"></textarea>
                 <input type="file" name="receipt" accept="image/*,application/pdf" required>
                 <button type="submit">إرسال وصل الدفع</button>
             </form>
         </div>
+
+        <!-- رسالة تأكيد عند إرسال الوصل بنجاح -->
+        <div class="confirmation-message" id="confirmationMessage">
+            <p>تم إرسال وصل الدفع بنجاح! شكراً لك.</p>
+        </div>
     </div>
+
+    <script>
+        // إضافة تأكيد للرسالة عند النجاح
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        if (success === 'true') {
+            document.getElementById('confirmationMessage').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
