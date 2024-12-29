@@ -1,0 +1,36 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // الحصول على البيانات من النموذج
+    $name = trim($_POST["name"]);
+    $email = trim($_POST["email"]);
+    $message = trim($_POST["message"]);
+
+    // التحقق من أن الحقول ليست فارغة
+    if (empty($name) || empty($email) || empty($message)) {
+        echo "<script>alert('جميع الحقول مطلوبة!'); window.history.back();</script>";
+        exit;
+    }
+
+    // التحقق من صحة البريد الإلكتروني
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('البريد الإلكتروني غير صالح!'); window.history.back();</script>";
+        exit;
+    }
+
+    // إعداد البيانات لإرسال البريد الإلكتروني
+    $to = "ha2502ha@gmail.com"; // أدخل بريدك الإلكتروني هنا
+    $subject = "رسالة جديدة من صفحة الاتصال";
+    $body = "اسم العميل: $name\n\nالبريد الإلكتروني: $email\n\nالرسالة:\n$message";
+    $headers = "From: $email" . "\r\n" . "Reply-To: $email" . "\r\n" . "Content-Type: text/plain; charset=UTF-8";
+
+    // إرسال البريد الإلكتروني
+    if (mail($to, $subject, $body, $headers)) {
+        echo "<script>alert('تم إرسال رسالتك بنجاح!'); window.location.href = 'thank_you.html';</script>";
+    } else {
+        echo "<script>alert('حدث خطأ أثناء إرسال الرسالة. الرجاء المحاولة لاحقًا.'); window.history.back();</script>";
+    }
+} else {
+    // إذا تم الوصول إلى الملف بدون إرسال نموذج
+    echo "<script>alert('لا يمكن الوصول إلى هذه الصفحة مباشرة.'); window.history.back();</script>";
+}
+?>
