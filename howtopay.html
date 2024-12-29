@@ -6,10 +6,10 @@
     <title>طرق الدفع</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* تنسيق الصفحة لتظهر في المنتصف */
+        /* تنسيق الصفحة لتظهر بشكل جذاب */
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #f0f8ff;
+            background-color: #e0f7fa;  /* خلفية فاتحة مع لون مريح */
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,53 +20,99 @@
         }
         .container {
             background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 80%;
-            max-width: 600px;
+            max-width: 700px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);  /* تأثير التحويم */
         }
         h1 {
             font-size: 3rem;
-            color: #007bff;
-            margin-bottom: 20px;
+            color: #00796b;  /* اللون الأخضر الهادئ */
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        p, ol, ul {
+            font-size: 1.3rem;
+            color: #004d40;
+            line-height: 1.8;
+            margin: 10px 0;
         }
         a {
             font-size: 1.5rem;
             display: block;
-            color: #007bff;
-            margin: 15px 0;
+            color: #00796b;
+            margin: 20px 0;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         a:hover {
-            color: #0056b3;
-        }
-        .hidden {
-            display: none;
+            color: #004d40;
+            transform: scale(1.05);  /* تأثير تحريك الرابط عند التمرير */
         }
         .footer {
-            margin-top: 30px;
-            font-size: 1rem;
-            color: #6c757d;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: #004d40;
         }
         .footer a {
-            color: #007bff;
+            color: #00796b;
             text-decoration: none;
         }
         .footer a:hover {
             text-decoration: underline;
+        }
+        /* تحسين التنسيق للروابط */
+        .link-container {
+            background-color: #00796b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .link-container a {
+            color: white;
+            font-weight: bold;
+        }
+        .link-container a:hover {
+            color: #004d40;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>طرق الدفع</h1>
-        <a href="activate.html" id="returnToActivation" class="hidden">العودة إلى صفحة التفعيل</a><br>
+        
+        <!-- الفقرة التي تحتوي على تفاصيل التطبيق -->
+        <p>✓ لماذا عليك أن تشتري هذا التطبيق؟</p>
+        <ol>
+            <li>توفير للمال والجهد</li>
+            <li>الدفع بسلاسة وأمان</li>
+            <li>كسب ثقة العلماء</li>
+            <li>تحصيل أموالك بأريحية</li>
+        </ol>
+        <p>© نعم أريد شراء التطبيق <a href="pay.html">رابط الدفع</a></p>
 
-        <!-- إضافة روابط لصفحات الدفع الجديدة -->
-        <a href="pay.html">الدفع عبر CCPPAY</a><br>
-        <a href="paypal.html">الدفع عبر PayPal</a>
+        <p>✓ لمن هذا التطبيق؟</p>
+        <ul>
+            <li>للذين يبحثون عن زبائن لمنتجاتهم</li>
+            <li>للذين يريدون بيع منتجاتهم إلى كافة زبائنهم أينما كانوا وحيثما وجدوا</li>
+        </ul>
+        <p>© نعم أريد شراء التطبيق <a href="pay.html">رابط الدفع</a></p>
+
+        <!-- رابط الفيديو على YouTube -->
+        <p>شاهد الفيديو الذي يشرح تفاصيل التطبيق: <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">رابط الفيديو</a></p>
+
+        <!-- إضافة روابط لصفحات الدفع -->
+        <div class="link-container">
+            <a href="pay.html">الدفع عبر CCPPAY</a><br>
+            <a href="paypal.html">الدفع عبر PayPal</a>
+        </div>
+
+        <a href="activate.html" id="returnToActivation" class="hidden">العودة إلى صفحة التفعيل</a>
     </div>
 
     <script>
