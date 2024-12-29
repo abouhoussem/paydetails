@@ -72,12 +72,9 @@
         <!-- زر الدفع -->
         <a href="howtopay.html" id="payButton">الدفع الآن</a>
 
-        <!-- زر تحميل الكود -->
-        <div id="downloadSection" class="hidden">
-            <p>تم الدفع بنجاح! يمكنك الآن تحميل كود التفعيل.</p>
-            <a href="https://nz.sa/QTilP" target="_blank">تحميل كود التفعيل</a>
-            
-            <!-- نافذة إدخال الكود -->
+        <!-- قسم إدخال كود التفعيل -->
+        <div id="activationSection" class="hidden">
+            <p>تم الدفع بنجاح! أدخل كود التفعيل لتفعيل التطبيق.</p>
             <div class="input-group">
                 <input type="text" id="activationCode" placeholder="أدخل كود التفعيل هنا">
                 <button onclick="activateApp()">تفعيل التطبيق</button>
@@ -91,8 +88,8 @@
         const paymentStatus = urlParams.get('payment');
 
         if (paymentStatus === 'success') {
-            // عرض قسم التنزيل إذا تم الدفع بنجاح
-            document.getElementById('downloadSection').classList.remove('hidden');
+            // إظهار نافذة إدخال الكود إذا تم الدفع بنجاح
+            document.getElementById('activationSection').classList.remove('hidden');
             document.getElementById('payButton').classList.add('hidden');
         }
 
@@ -103,4 +100,15 @@
 
             if (userCode === correctCode) {
                 alert("تم تفعيل التطبيق بنجاح!");
-                window.location.href = "success.html
+                window.location.href = "success.html";
+            } else if (userCode === adminCode) {
+                alert("تم الدخول كمسؤول. لديك صلاحيات كاملة.");
+                localStorage.setItem("isAdmin", "true"); // تخزين حالة المسؤول
+                window.location.href = "success.html";
+            } else {
+                alert("كود التفعيل غير صحيح. يرجى المحاولة مرة أخرى.");
+            }
+        }
+    </script>
+</body>
+</html>
