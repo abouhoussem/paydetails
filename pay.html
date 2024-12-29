@@ -3,173 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة بيع عبر الحساب البريدي</title>
-    <!-- إضافة خط من Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>تفاصيل المنتج والدفع</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* تنسيق الصفحة */
         body {
             font-family: 'Cairo', sans-serif;
-            direction: rtl;
-            background-color: #f4f7fa;
             margin: 0;
             padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .container {
-            width: 85%;
-            margin: 30px auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        .product-info {
+            background-color: #f0f4f8;
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .product-info img {
-            width: 250px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
         }
-        .product-info div {
-            width: 70%;
-        }
-        .product-info h3 {
-            font-size: 24px;
-            color: #333;
-        }
-        .payment-info {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border: 1px solid #ddd;
-        }
-        .payment-info h3 {
-            color: #3498db;
+
+        h1 {
+            font-size: 2.5rem;
+            color: #007bff;
             margin-bottom: 15px;
         }
-        .form-group {
+
+        .owner {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #212529;
             margin-bottom: 20px;
         }
-        label {
-            display: block;
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 5px;
+
+        .details {
+            font-size: 1.2rem;
+            color: #495057;
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            font-size: 16px;
-            margin-bottom: 15px;
-            background-color: #fafafa;
+
+        .account {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
         }
-        input:focus, textarea:focus {
-            border-color: #3498db;
-            outline: none;
+
+        .highlight {
+            font-size: 1.3rem;
+            color: #007bff;
         }
-        button {
-            background-color: #3498db;
-            color: white;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
+
+        .product-desc {
+            font-size: 1.1rem;
+            color: #495057;
+            margin-bottom: 20px;
         }
-        button:hover {
-            background-color: #2980b9;
+
+        .price {
+            font-size: 1.5rem;
+            color: #28a745;
+            font-weight: bold;
+            margin: 20px 0;
         }
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #6c757d;
         }
-        footer a {
-            color: #ecf0f1;
+
+        .footer a {
+            color: #007bff;
             text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>أهلاً بك في صفحة البيع عبر الحساب البريدي</h1>
-</header>
-
-<div class="container"><h2>معلومات المنتج</h2>
-    <div class="product-info">
-
-       
-           
-                                        
-
-
-                
-                </a>
-        <div>
-            <h3></h3>اسم المنتج تفاصيل الدفع</h3>
-            <p>هو تطبيق لاجراءات المعاملات المالية لزبائنك و تسهيل عملك في الحصول على اموالك  من زبائنك و عملائك بطريقة سلسة و أمنة و سهلة.</p>
-            <p><strong>السعر: 2650 دينار جزائري</strong></p>
+    <div class="container">
+        <h1>تفاصيل المنتج والدفع</h1>
+        <p class="owner">اسم صاحب الحساب: <span class="highlight">محمد علي</span></p>
+        <div class="account">
+            <p>رقم الحساب البريدي: <span class="highlight">426423264</span></p>
+            <p>رقم بريدي موب: <span class="highlight">00799999000426423264</span></p>
+        </div>
+        <p class="product-desc">
+            المنتج: هذا هو وصف المنتج الذي ترغب في شرائه. يتميز بجودة عالية وسعر تنافسي لضمان رضا العملاء.
+        </p>
+        <p class="price">المبلغ المطلوب: <span>9.99 دولار</span></p>
+        <div class="footer">
+            <p>للمزيد من التفاصيل، <a href="contact.html">اتصل بنا</a></p>
         </div>
     </div>
-
-    <div class="payment-info">
-        <h3>تعليمات الدفع</h3>
-        <p>لإتمام عملية الشراء، يرجى تحويل المبلغ إلى حسابك البريدي:</p>
-        <p><strong>رقم الحساب البريدي:</strong> 4264232 
-        <p><strong>اسم صاحب الحساب:</strong> عاتق حسان</p>00799999000426423264رقم بريدي موب
-            /64</p>
-        <p><strong>كيفية الدفع:</strong> قم بزيارة مكتب البريد أو استخدم خدمة بريدي موب لتحويل المبلغ.</p>
-    </div>
-
-    <h2>تأكيد الدفع</h2>
-    <form action="#" method="POST">
-        <div class="form-group">
-            <label for="transaction-id">رقم المعاملة (التحويل):</label>
-            <input type="text" id="transaction-id" name="transaction-id" required>
-        </div>
-
-        <div class="form-group">
-            <label for="amount-paid">المبلغ المدفوع:</label>
-            <input type="number" id="amount-paid" name="amount-paid" required>
-        </div>
-
-        <div class="form-group">
-            <label for="payment-date">تاريخ الدفع:</label>
-            <input type="date" id="payment-date" name="payment-date" required>
-        </div>
-
-        <div class="form-group">
-            <label for="comments">تعليقات إضافية (اختياري):</label>
-            <textarea id="comments" name="comments" rows="4"></textarea>
-        </div>
-
-        <button type="submit">إرسال تأكيد الدفع</button>
-    </form>
-</div>
-
-<footer>
-<p>حقوق النشر © 2024 <a href="#">pay-now</a></p></footer>
-
 </body>
 </html>
