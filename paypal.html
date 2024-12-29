@@ -7,7 +7,7 @@
 
     <!-- إضافة SDK باي بال مع Client ID و العملة -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAF249GL3NyOrO4IWe8ADZE2aBXcXtes8wKqapoGUgdCstdonjCWDQCUSRQ-rpPx8ds8sco2CGFdwxkvA&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,15 +41,36 @@
             font-size: 14px;
             color: #777;
         }
+
+        .payment-status {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>الدفع عبر باي بال</h2>
+    
+    <!-- إضافة رابط الفيديو للتطبيق -->
+    <p><a href="https://www.youtube.com/watch?v=xxxxxxx" target="_blank" style="color: #007bff;">شاهد شرح التطبيق على يوتيوب</a></p>
 
     <!-- حاوية زر PayPal -->
     <div id="paypal-container-TSWWESU4ZT3UE"></div>
+
+    <div class="payment-status">
+        <!-- حالة الدفع من خلال جافا سكريبت بعد عملية الدفع -->
+        <p id="paymentStatusMessage"></p>
+    </div>
 
     <div class="footer">
         <p>جميع الحقوق محفوظة &copy; 2024</p>
@@ -59,6 +80,21 @@
 <script>
   paypal.HostedButtons({
     hostedButtonId: "TSWWESU4ZT3UE",  // استخدم معرف الزر الخاص بك هنا
+    onApprove: function(data, actions) {
+        // عند موافقة العميل على الدفع، سيتم تنفيذ هذا الكود
+        actions.order.capture().then(function(details) {
+            // التأكد من نجاح عملية الدفع
+            document.getElementById("paymentStatusMessage").textContent = "تمت عملية الدفع بنجاح. شكراً لك!";
+            document.getElementById("paymentStatusMessage").className = "success";
+            
+            // يمكنك هنا إرسال البيانات إلى الخادم للتسجيل، مثلاً عبر AJAX
+        });
+    },
+    onError: function(err) {
+        // في حالة حدوث خطأ
+        document.getElementById("paymentStatusMessage").textContent = "حدث خطأ أثناء عملية الدفع. يرجى المحاولة لاحقاً.";
+        document.getElementById("paymentStatusMessage").className = "error";
+    }
   }).render("#paypal-container-TSWWESU4ZT3UE");
 </script>
 
