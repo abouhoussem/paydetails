@@ -1,45 +1,48 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // استلام البيانات من النموذج
-    $customerName = htmlspecialchars($_POST['customerName']);
-    $customerAccount = htmlspecialchars($_POST['customerAccount']);
-    
-    // معالجة ملف وصل الدفع
-    $uploadDir = "uploads/";
-    $fileName = basename($_FILES["paymentReceipt"]["name"]);
-    $targetFilePath = $uploadDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-    $uploadSuccess = false;
+// التحقق من إرسال النموذج
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // بيانات الدفع
+    $username = htmlspecialchars($_POST['username']);
+    $email = htmlspecialchars($_POST['email']);
+    $amount = htmlspecialchars($_POST['amount']);
+    $message = htmlspecialchars($_POST['message']);
 
-    // التحقق من صيغة الملف
-    $allowedTypes = ['jpg', 'jpeg', 'png', 'pdf'];
-    if (in_array(strtolower($fileType), $allowedTypes)) {
-        if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0777, true); // إنشاء مجلد التحميل إذا لم يكن موجودًا
-        }
+    // رفع ملف وصل الدفع
+    $uploadDir = 'uploads/';
+    $uploadedFile = $uploadDir . basename($_FILES['receipt']['name']);
+    $uploadOk = 1;
 
-        // رفع الملف
-        if (move_uploaded_file($_FILES["paymentReceipt"]["tmp_name"], $targetFilePath)) {
-            $uploadSuccess = true;
-        } else {
-            $error = "حدث خطأ أثناء رفع الملف.";
-        }
+    if (move_uploaded_file($_FILES['receipt']['tmp_name'], $uploadedFile)) {
+        $fileStatus = "تم رفع الملف بنجاح.";
     } else {
-        $error = "صيغة الملف غير مدعومة. يرجى رفع ملفات بصيغة JPG, PNG, أو PDF.";
+        $fileStatus = "حدث خطأ أثناء رفع الملف.";
+        $uploadOk = 0;
     }
 
-    // عرض رسالة النجاح أو الخطأ
-    if ($uploadSuccess) {
-        echo "<h1>تم استلام البيانات بنجاح</h1>";
-        echo "<p>شكرًا لك، $customerName.</p>";
-        echo "<p>رقم الحساب الذي دفعت منه: $customerAccount</p>";
-        echo "<p>تم رفع وصل الدفع بنجاح.</p>";
-        echo "<a href='$targetFilePath' target='_blank'>عرض وصل الدفع</a>";
+    // إرسال إشعار إلى البريد الإلكتروني
+    $to = 'ha2502ha@gmail.com';
+    $subject = 'تفاصيل عملية الدفع';
+    $body = "تم استلام تفاصيل الدفع:\n\n" .
+            "اسم العميل: $username\n" .
+            "البريد الإلكتروني: $email\n" .
+            "المبلغ المدفوع: $amount\n" .
+            "رسالة العميل: $message\n" .
+            "رابط الملف المرفوع: " . ($uploadOk ? $_SERVER['HTTP_HOST'] . '/' . $uploadedFile : "لم يتم رفع الملف") . "\n";
+
+    $headers = "From: no-reply@yourdomain.com\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8";
+
+    if (mail($to, $subject, $body, $headers)) {
+        $mailStatus = "تم إرسال البيانات بنجاح إلى بريدك الإلكتروني.";
     } else {
-        echo "<h1>حدث خطأ</h1>";
-        echo "<p>$error</p>";
+        $mailStatus = "فشل في إرسال البريد الإلكتروني.";
     }
+
+    // رسالة الرد للمستخدم
+    echo "<h1>شكرًا لتقديم التفاصيل</h1>";
+    echo "<p>$fileStatus</p>";
+    echo "<p>$mailStatus</p>";
 } else {
-    echo "<h1>الدخول غير مسموح</h1>";
+    echo "<h1>لم يتم إرسال أي بيانات!</h1>";
 }
 ?>
