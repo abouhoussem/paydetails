@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفعيل التطبيق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f3f7fa;
@@ -97,15 +98,9 @@
 
         function activateApp() {
             const correctCode = "12345-67890";
+            const adminCode = "MASTER-ADMIN-2024"; // رمز المسؤول
             const userCode = document.getElementById("activationCode").value;
 
             if (userCode === correctCode) {
                 alert("تم تفعيل التطبيق بنجاح!");
-                window.location.href = "success.html";
-            } else {
-                alert("كود التفعيل غير صحيح. يرجى المحاولة مرة أخرى.");
-            }
-        }
-    </script>
-</body>
-</html>
+                window.location.href = "success.html
